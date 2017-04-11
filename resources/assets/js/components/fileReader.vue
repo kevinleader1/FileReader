@@ -31,10 +31,10 @@
                                 {{ itemName }}
                             </a>
                         </p>
-                        <article v-else="displayContent" class="message is-info">
+                        <article v-if="previewFile" class="message is-info">
                             <div class="message-header">
                                 <span>{{ FileCodeName }}</span>
-                                <button class="delete" @click="displayContent = true"></button>
+                                <button class="delete" @click="closePreviewFile"></button>
                             </div>
                             <div class="message-body">
                                 <pre class="has-text-left">
@@ -59,7 +59,7 @@
                 urlCourant : repository.UrlCourant,
                 displayDirectory : true ,
                 displayContent : true ,
-                previewFile : '' ,
+                previewFile : false ,
                 FileCodeName : ''
             }
         },
@@ -111,6 +111,12 @@
                 }, response => {
                     // error callback
                 });
+            } ,
+            closePreviewFile : function(){
+                // On remet le content
+                this.displayContent = true
+                // On met à false pour bien refermer
+                this.FileCodeName = false;
             }
         }
     }
