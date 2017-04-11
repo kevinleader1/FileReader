@@ -31,7 +31,7 @@
                                 {{ itemName }}
                             </a>
                         </p>
-                        <article v-if="previewFile" class="message is-info">
+                        <article v-if="previewFile != false" class="message is-info">
                             <div class="message-header">
                                 <span>{{ FileCodeName }}</span>
                                 <button class="delete" @click="closePreviewFile"></button>
@@ -116,7 +116,7 @@
                 // On remet le content
                 this.displayContent = true
                 // On met à false pour bien refermer
-                this.FileCodeName = false;
+                this.previewFile = false;
             }
         }
     }
